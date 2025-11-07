@@ -22,6 +22,8 @@ function createNewTask() {
         return;
     }
     
+    console.log('正在创建任务:', title); // 调试信息
+    
     // 创建临时任务数据
     const tempTask = {
         id: Date.now(),
@@ -36,7 +38,15 @@ function createNewTask() {
     
     // 保存到临时存储，然后跳转
     sessionStorage.setItem('editingTask', JSON.stringify(tempTask));
-    window.location.href = 'task-detail.html';
+    console.log('准备跳转到详情页'); // 调试信息
+    
+    // 尝试不同的跳转方式
+    try {
+        window.location.href = 'task-detail.html';
+    } catch (error) {
+        console.error('跳转错误:', error);
+        alert('跳转失败，请检查task-detail.html文件是否存在');
+    }
 }
 
 // 渲染任务卡片
