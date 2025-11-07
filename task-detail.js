@@ -96,7 +96,11 @@ function saveTask() {
     
     // 保存到主任务列表
     saveTaskToList(taskData);
-    goBack();
+    
+    // 确保跳转
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 100);
 }
 
 function saveTaskToList(updatedTask) {
@@ -105,8 +109,11 @@ function saveTaskToList(updatedTask) {
     const existingIndex = tasks.findIndex(task => task.id === updatedTask.id);
     
     if (existingIndex >= 0) {
-        // 更新现有任务
-        tasks[existingIndex] = updatedTask;
+        // 更新现有任务 - 添加更新时间
+        tasks[existingIndex] = {
+            ...updatedTask,
+            updatedAt: new Date().toISOString()
+        };
     } else {
         // 添加新任务
         tasks.push(updatedTask);
