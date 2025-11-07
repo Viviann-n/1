@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>任务详情 - 我的任务管理器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button onclick="goBack()" class="back-btn">← 返回</button>
+            <h1>📋 任务详情</h1>
+        </header>
+
+        <div class="task-detail-section">
+            <div class="form-group">
+                <label for="taskTitle">任务标题</label>
+                <input type="text" id="taskTitle" placeholder="输入任务标题..." maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label for="taskDescription">任务描述</label>
+                <textarea id="taskDescription" placeholder="详细描述这个任务..." rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="dueDate">截止日期</label>
+                <input type="date" id="dueDate">
+            </div>
+
+            <div class="form-group">
+                <label>任务步骤</label>
+                <div class="steps-container">
+                    <div id="stepsList" class="steps-list"></div>
+                    <button type="button" onclick="addStep()" class="add-step-btn">+ 添加步骤</button>
+                </div>
+            </div>
+
+            <div class="priority-section">
+                <label>优先级</label>
+                <div class="priority-buttons">
+                    <button type="button" class="priority-btn low" onclick="setPriority('low')">低</button>
+                    <button type="button" class="priority-btn medium active" onclick="setPriority('medium')">中</button>
+                    <button type="button" class="priority-btn high" onclick="setPriority('high')">高</button>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button onclick="saveTask()" class="save-btn">保存任务</button>
+                <button onclick="goBack()" class="secondary-btn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="task-detail.js"></script>
+</body>
+</html>
